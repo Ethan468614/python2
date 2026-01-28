@@ -18,6 +18,8 @@ str1 = IOstring()
 
 str1.get_string()
 str1.print_string()
+
+
            
 
 
