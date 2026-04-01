@@ -13,25 +13,30 @@ def normalize_input(text):
 
 
 def recommend_destination(): 
-    suggestion = random.choice(destinations[preference])
+    # You must define 'preference' before using it to avoid a NameError
+    preference = normalize_input(input("Enter type: ")) 
 
-    print(Fore.GREEN + f"Travel Bot: How about {suggestion}?")
-    print(Fore.CYAN + "Travel Bot: DO you like it yes/no")
-    answer = input(Fore.YELLOW + "You: ").lower()
+    if preference in destinations:
+        suggestion = random.choice(destinations[preference])
 
-    if answer == "yes":
-        print(Fore.GREEN + f"Travel Bot: Awesome! Enjoy! {suggestion}")
+        print(Fore.GREEN + f"Travel Bot: How about {suggestion}?")
+        print(Fore.CYAN + "Travel Bot: DO you like it yes/no")
+        answer = input(Fore.YELLOW + "You: ").lower()
 
-    elif answer == "no":
-        print(Fore.RED + "Travel Bot: Lets try another .")
-        recommend_destination()
+        if answer == "yes":
+            print(Fore.GREEN + f"Travel Bot: Awesome! Enjoy! {suggestion}")
+
+        elif answer == "no":
+            print(Fore.RED + "Travel Bot: Lets try another .")
+            recommend_destination()
+
+        else: 
+            print(Fore.RED + "Travel Bot: I'll suggest again.")
+            recommend_destination()
 
     else: 
-        print(Fore.RED + "Travel Bot: I'll suggest again.")
+        print(Fore.RED + "Travel Bot: Sorry, I don't have that type of destination")
         recommend_destination()
 
-    else: 
-    print(Fore.RED + "Travel Bot: Sorry, I don't have that type of destination")
-    recommend_destination()
 
 
