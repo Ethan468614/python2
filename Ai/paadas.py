@@ -30,7 +30,7 @@ def recommend(genre=None, mood=None, rating=None, n=5):
             if len(out) == n: break
     return out if out else "No suitable movie recommendations found."
 
-def show(recs, name):
+def show(recs,name):
     print(Fore.YELLOW + f"\n🍿 AI-Analyzed Movie Recommendations for {name}:")
     for i, (t, p) in enumerate(recs, 1):
         print(f"{Fore.CYAN}{i}. 🎥 {t} (Polarity: {p:.2f}, {senti(p)})")
